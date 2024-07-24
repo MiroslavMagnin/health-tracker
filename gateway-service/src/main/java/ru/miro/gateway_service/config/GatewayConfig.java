@@ -21,7 +21,7 @@ public class GatewayConfig {
 
                 .route("user-service", r -> r.path("/user/**")
                         .filters(f -> f.filter(filter))
-                        .uri("http://localhost:8091")) // lb://user-service
+                        .uri("http://localhost:8091")) // lb://user-service http://localhost:8091
 
                 .build();
     }

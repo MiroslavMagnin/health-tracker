@@ -1,11 +1,13 @@
 package ru.miro.user_service.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.miro.user_service.dto.UserDTO;
 import ru.miro.user_service.exception.UserNotFoundException;
 import ru.miro.user_service.mapper.UserMapper;
+import ru.miro.user_service.model.Role;
 import ru.miro.user_service.model.User;
 import ru.miro.user_service.repository.UsersRepository;
 
@@ -18,6 +20,7 @@ import java.util.Optional;
 public class UsersService {
 
     private final UsersRepository usersRepository;
+    private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
     public List<User> findAll() {
@@ -41,6 +44,7 @@ public class UsersService {
     }
 
     // TODO: invalid data exception handler
+    // TODO: password encode
     @Transactional
     public void update(long id, UserDTO userDTO) {
         Optional<User> user = usersRepository.findById(id);
@@ -65,6 +69,8 @@ public class UsersService {
     }
 
     private void enrichCreatedUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.USER);
         user.setCreatedAt(System.currentTimeMillis());
         user.setUpdatedAt(System.currentTimeMillis());
     }

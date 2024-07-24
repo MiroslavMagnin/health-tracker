@@ -15,7 +15,7 @@ import ru.miro.user_service.util.UserDTOValidator;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user/users")
+@RequestMapping("/user/")
 @RequiredArgsConstructor
 public class UsersController {
 
@@ -30,6 +30,11 @@ public class UsersController {
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") long id) {
         return usersService.findOne(id);
+    }
+
+    @GetMapping("/getUserByEmail/{email}")
+    public User getUser(@PathVariable("email") String email) {
+        return usersService.findOne(email);
     }
 
     @PostMapping("/add")

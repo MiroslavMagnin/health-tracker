@@ -31,12 +31,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             String token = request.getHeader("Authorization");
 
-            System.out.println("Тут 1");
-
             if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
                 Claims claims = jwtUtil.getClaims(token.substring(7));
-
-                System.out.println("Тут 2");
 
                 SimpleGrantedAuthority authority = new SimpleGrantedAuthority(claims.getIssuer());
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
@@ -49,7 +45,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         filterChain.doFilter(request, response);
     }
 }

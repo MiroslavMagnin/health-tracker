@@ -11,7 +11,7 @@ import javax.crypto.SecretKey;
 @Component
 public class JwtUtil {
     @Value("${token.signing.key}")
-    public static final String SECRET = null;
+    public static final String SECRET = "413F4428472B4B6250655368566D5970337336763979244226452948404D6351";
 
     public void validateToken(final String token) {
         Jwts.parser()

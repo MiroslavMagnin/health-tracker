@@ -2,25 +2,12 @@ server:
   port: 8090
 
 spring:
-  config:
-    import: optional:file:.env[.properties]
+  cloud:
+    config:
+      enabled: false
 
   application:
     name: auth-service
-
-  datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
-    username: ${POSTGRES_USERNAME}
-    password: ${POSTGRES_PASSWORD}
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-
-  data:
-    jdbc:
-      dialect: postgresql
 
 token:
   signing:
