@@ -19,7 +19,7 @@ public class GatewayConfig {
                 .route("auth-service", r -> r.path("/auth/**")
                         .uri("http://localhost:8090"))
 
-                .route("user-service", r -> r.path("/user/**")
+                .route("users-service", r -> r.path("/users/**")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:8091")) // lb://user-service http://localhost:8091
 

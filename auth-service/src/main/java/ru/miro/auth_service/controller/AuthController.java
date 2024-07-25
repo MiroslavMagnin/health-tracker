@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.miro.auth_service.dto.SignUpDTO;
 import ru.miro.auth_service.dto.TokenDTO;
 import ru.miro.auth_service.service.AuthService;
 import ru.miro.auth_service.dto.request.SignUpRequest;
@@ -24,8 +23,6 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<HttpStatus> signup(@RequestBody SignUpRequest request) {
-        System.out.println(request.getName() + " " + request.getEmail() + " " + request.getPassword() +
-                " " + request.getBirthDate() + " " + request.getWeight() + " " + request.getHeight());
         return ResponseEntity.ok(authService.signup(request));
     }
 

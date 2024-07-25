@@ -1,0 +1,28 @@
+server:
+  port: 8091
+
+spring:
+  application:
+    name: users-service
+
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/health_tracker_db
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  data:
+    jdbc:
+      dialect: postgresql
+
+token:
+  signing:
+    key: 413F4428472B4B6250655368566D5970337336763979244226452948404D6351

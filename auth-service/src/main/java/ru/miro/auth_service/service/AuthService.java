@@ -6,8 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import ru.miro.auth_service.client.UserServiceClient;
-import ru.miro.auth_service.dto.SignUpDTO;
+import ru.miro.auth_service.client.UsersServiceClient;
 import ru.miro.auth_service.dto.TokenDTO;
 import ru.miro.auth_service.exception.WrongCredentialsException;
 import ru.miro.auth_service.dto.request.SignUpRequest;
@@ -19,11 +18,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthService {
     private final AuthenticationManager authenticationManager;
-    private final UserServiceClient userServiceClient;
+    private final UsersServiceClient usersServiceClient;
     private final JwtService jwtService;
 
     public HttpStatus signup(SignUpRequest request) {
-        userServiceClient.add(request);
+        usersServiceClient.add(request);
         return HttpStatus.CREATED;
     }
 

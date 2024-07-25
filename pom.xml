@@ -12,7 +12,7 @@
 	<modules>
 		<module>gateway-service</module>
 		<module>auth-service</module>
-        <module>user-service</module>
+        <module>users-service</module>
     </modules>
 
 </project>
