@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+<div>
+    <h1>This is sign in page. You can login to your account</h1>
+</div>
+
+<div>
+    <div>
+        <h2>Sign in:</h2>
+
+        <form id="signin-form">
+            <label for="email-input">Email: </label>
+            <input id="email-input" type="email" required>
+
+            <label for="password-input">Password: </label>
+            <input id="password-input" type="password" required>
+
+            <input type="submit" value="Sign in">
+        </form>
+
+    </div>
+
+    <div id="signin-response"></div>
+
+    <div id="all-users">
+        <input id="get-users" type="button" value="Get All Users">
+    </div>
+
+</div>
+
+<script src="js/sign.js"></script>
+</body>
+
+</html>

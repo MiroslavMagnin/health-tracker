@@ -22,7 +22,6 @@ public class UsersController {
     private final UsersService usersService;
     private final UserDTOValidator userDTOValidator;
 
-//    @Secured("ROLE_ADMIN")
     @GetMapping()
     public List<User> getUsers() {
         return usersService.findAll();
