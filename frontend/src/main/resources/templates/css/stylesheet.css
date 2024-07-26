@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+}
+
+header {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-left h1 {
+    margin: 0;
+}
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.nav-right a:hover {
+    background-color: #575757;
+}
+
+.sign-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 60px;
+}
+
+.sign-container h2 {
+    font-size: 28px;
+    align-items: center;
+    text-align: center;
+    margin: 5px 5px 10px;
+}
+
+.signin-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-form label, .signup-form label  {
+    margin-top: 15px;
+}
+
+.signin-form input, .signup-form input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.signin-form input[type="submit"], .signup-form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signin-form input[type="submit"]:hover, .signup-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    display: none;
+}
+
+
+
+/* Home page */
+#delete-jwt {
+    background-color: #f44336; /* Красный цвет фона */
+    color: white; /* Белый цвет текста */
+    border: none; /* Убираем рамку */
+    padding: 10px 20px; /* Отступы вокруг текста */
+    text-align: center; /* Центрирование текста */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    display: inline-block; /* Встроенный блочный элемент */
+    font-size: 16px; /* Размер шрифта */
+    margin: 4px 2px; /* Отступы вокруг кнопки */
+    cursor: pointer; /* Курсор указателя при наведении */
+    border-radius: 5px; /* Скругленные углы */
+    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+}
+
+#delete-jwt:hover {
+    background-color: #d32f2f; /* Тёмно-красный цвет фона при наведении */
+}
+
+
+
+
+/* My data page */
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 20px; /* Отступ сверху, чтобы содержимое не перекрывалось nav */
+}
+
+.container h2 {
+    font-size: 28px;
+    align-items: center;
+    text-align: center;
+    margin: 5px 5px 10px;
+}
+
+.signin-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+}

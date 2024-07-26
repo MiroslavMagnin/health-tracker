@@ -28,7 +28,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
                 return ErrorResponse
                         .builder()
                         .httpStatus(HttpStatus.valueOf(response.status()))
-                        .message((String) errors.get("error") + response)
+                        .message((String) errors.get("message"))
                         .build();
 
         } catch (IOException exception) {

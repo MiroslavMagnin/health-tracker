@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign up</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
+
 <body>
 
+    <header>
+        <nav>
+            <div class="nav-left">
+                <h1>Health Tracker</h1>
+            </div>
+
+            <div class="nav-right">
+                <a href="../pages/home.html" id="home-link">Home</a>
+                <a href="../pages/about.html" id="about-link">About</a>
+                <a href="../sign/signup.html" id="signup-link">Sign Up</a>
+                <a href="../sign/signin.html" id="signin-link">Sign In</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sign-container">
+        <h2>Sign up</h2>
+
+        <div id="error-message" class="error-message"></div>
+
+        <form id="signup-form" class="signup-form">
+
+            <label for="name-input">Name:</label>
+            <input id="name-input" type="text" required>
+
+            <label for="birth-date-input">Birth date:</label>
+            <input id="birth-date-input" type="date" required>
+
+            <label for="email-input">Email:</label>
+            <input id="email-input" type="email" required>
+
+            <label for="password-input">Password:</label>
+            <input id="password-input" type="password" required>
+
+            <label for="weight-input">Weight:</label>
+            <input id="weight-input" type="text" required>
+
+            <label for="height-input">Height:</label>
+            <input id="height-input" type="text" required>
+
+            <input type="submit" value="Sign in">
+        </form>
+    </div>
+
+    <script src="../js/sign.js"></script>
 </body>
+
 </html>
