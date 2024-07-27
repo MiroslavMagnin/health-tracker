@@ -117,7 +117,7 @@ $(document).ready(function () {
                 const data = await response.json();
 
                 // Redirect to the signin page
-                window.location.href = '../sign/signin.html';
+                window.location.href = '../pages/sign/signin.html';
 
             } else {
                 const errorData = await response.json();
@@ -140,7 +140,10 @@ $(document).ready(function () {
 
     // If the user had authenticated, it will be show his information
     if (document.location.href === "http://localhost:63342/health-tracker/frontend/src/main/resources/templates/pages/my-data.html") {
-        const container = $('.container');
+        const container = document.getElementById('user-data-container');
+
+        var divUserInfo = document.createElement('div');
+        divUserInfo.setAttribute('class', 'user-info');
 
         if (checkAuth()) {
             $.ajax({
@@ -151,20 +154,23 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     console.log(data)
-                    container.html("<h2>Me:</h2>").show();
-                    container.html(
-                        "<h3>Name: " + data.name + "</h3>" +
-                        "<h3>Birth date: " + data.birthDate + "</h3>" +
-                        "<h3>Email: " + data.email + "</h3>" +
-                        "<h3>Weight: " + data.weight + "</h3>" +
-                        "<h3>Height: " + data.height + "</h3>"
-                    ).show();
-
+                    divUserInfo.innerHTML = `
+                            <h2>Me:</h2>
+                            <h3>Name: ${data.name} + </h3>                      
+                            <h3>Birth date: ${data.birthDate}</h3>
+                            <h3>Email: ${data.email} </h3>
+                            <h3>Weight: ${data.weight}</h3>
+                            <h3>Height: ${data.heigh}</h3>
+                    `;
+                    container.appendChild(divUserInfo);
                 }
 
             });
         } else {
-            container.html("<h2>You're not authenticated</h2>").show();
+            divUserInfo.innerHTML = `
+                    <h3>You're not authenticated</h3>            
+            `;
+            container.appendChild(divUserInfo);
         }
     }
 });

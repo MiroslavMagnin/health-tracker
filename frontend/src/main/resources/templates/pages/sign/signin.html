@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="../../css/stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-left">
+                <a id="logo" href="home.html">
+                    <div id="site-logo" title="Home page">
+                        <h1>Health Tracker</h1>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <a href="../home.html" id="home-link">Home</a>
+                <a href="../my-data.html" id="my-data-link">My data</a>
+                <a href="../about.html" id="about-link">About</a>
+                <a href="signup.html" id="signup-link">Sign Up</a>
+                <a href="signin.html" id="signin-link">Sign In</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sign-container">
+        <h2>Sign in</h2>
+
+        <div id="error-message" class="error-message"></div>
+
+        <form id="signin-form" class="signin-form">
+
+            <label for="email-input">Email:</label>
+            <input id="email-input" type="email" required>
+
+            <label for="password-input">Password:</label>
+            <input id="password-input" type="password" required>
+
+            <input type="submit" value="Sign in">
+        </form>
+    </div>
+
+    <script src="../../js/sign.js"></script>
+</body>
+
+</html>

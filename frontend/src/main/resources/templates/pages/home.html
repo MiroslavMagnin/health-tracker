@@ -5,28 +5,40 @@
     <title>Home</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <nav>
             <div class="nav-left">
-                <h1>Health Tracker</h1>
+                <a id="logo" href="home.html">
+                    <div id="site-logo" title="Home page">
+                        <h1>Health Tracker</h1>
+                    </div>
+                </a>
             </div>
 
             <div class="nav-right">
                 <a href="../pages/home.html" id="home-link">Home</a>
                 <a href="../pages/my-data.html" id="my-data-link">My data</a>
                 <a href="../pages/about.html" id="about-link">About</a>
-                <a href="../sign/signup.html" id="signup-link">Sign Up</a>
-                <a href="../sign/signin.html" id="signin-link">Sign In</a>
+                <a href="sign/signup.html" id="signup-link">Sign Up</a>
+                <a href="sign/signin.html" id="signin-link">Sign In</a>
             </div>
         </nav>
     </header>
 
     <h1>Home</h1>
 
-    <button id="delete-jwt" type="button">Delete JWT</button>
+    <div class="container">
+        <label for="delete-jwt">Delete JWT from localstorage (logout): </label>
+        <button id="delete-jwt" type="button">Delete JWT</button>
+
+    </div>
 
     <script src="../js/sign.js"></script>
 </body>

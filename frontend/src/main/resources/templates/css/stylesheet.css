@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Rubik Light", sans-serif;
+    font-weight: 500;
     margin: 0;
     padding: 0;
     display: flex;
@@ -8,20 +9,32 @@ body {
     background-color: #f4f4f9;
 }
 
+
+
+/* Header */
 header {
     width: 100%;
-    background-color: #333;
     color: white;
     display: flex;
     justify-content: space-between;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+header #logo {
+    color: #ABF27E;
+    outline: none;
+    text-decoration: none;
+}
+
+header #logo:hover {
+    color: #5ECB62;
+}
+
 nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
+    background-color: #254622;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -36,6 +49,8 @@ nav {
 
 .nav-right a {
     color: white;
+    font-size: 20px;
+    color: #ABF27E;
     text-decoration: none;
     margin: 0 10px;
     padding: 5px 10px;
@@ -43,9 +58,40 @@ nav {
 }
 
 .nav-right a:hover {
-    background-color: #575757;
+    background-color: #5E7405;
 }
 
+
+
+/* Main container */
+.container {
+    width: 50%;
+    margin-top: 20px;
+    padding: 20px;
+    align-items: center;
+    /*text-align: center;*/
+    text-align: left;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.container h2 {
+    font-size: 28px;
+    align-items: center;
+    text-align: center;
+    margin: 5px 5px 10px;
+}
+
+.container label {
+    font-size: 20px;
+    margin: 5px 5px 10px;
+}
+
+
+
+/* Sign forms */
 .sign-container {
     background-color: white;
     padding: 20px;
@@ -81,7 +127,7 @@ nav {
 .signin-form input[type="submit"], .signup-form input[type="submit"] {
     margin-top: 20px;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #5ECB62;
     color: white;
     border: none;
     border-radius: 4px;
@@ -103,45 +149,25 @@ nav {
 
 /* Home page */
 #delete-jwt {
-    background-color: #f44336; /* Красный цвет фона */
-    color: white; /* Белый цвет текста */
-    border: none; /* Убираем рамку */
-    padding: 10px 20px; /* Отступы вокруг текста */
-    text-align: center; /* Центрирование текста */
-    text-decoration: none; /* Убираем подчеркивание текста */
-    display: inline-block; /* Встроенный блочный элемент */
-    font-size: 16px; /* Размер шрифта */
-    margin: 4px 2px; /* Отступы вокруг кнопки */
-    cursor: pointer; /* Курсор указателя при наведении */
-    border-radius: 5px; /* Скругленные углы */
-    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 #delete-jwt:hover {
-    background-color: #d32f2f; /* Тёмно-красный цвет фона при наведении */
+    background-color: #d32f2f;
 }
-
 
 
 
 /* My data page */
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin-top: 20px; /* Отступ сверху, чтобы содержимое не перекрывалось nav */
-}
 
-.container h2 {
-    font-size: 28px;
-    align-items: center;
-    text-align: center;
-    margin: 5px 5px 10px;
-}
-
-.signin-form, .signup-form {
-    display: flex;
-    flex-direction: column;
-}
