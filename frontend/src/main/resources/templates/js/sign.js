@@ -174,3 +174,21 @@ $(document).ready(function () {
         }
     }
 });
+
+const createHealthDataBtn = document.getElementById("create-health-data-btn");
+const createHealthDataDialog = document.getElementById("create-health-data-dialog");
+const createHealthDataPopup = document.getElementById("create-health-data-dialog-container");
+const cancelCreateHealthDataBtn = document.getElementById("cancel-create-health-data-btn");
+
+createHealthDataBtn.addEventListener("click", () =>
+    createHealthDataDialog.showModal()
+);
+cancelCreateHealthDataBtn.addEventListener("click", () =>
+    createHealthDataDialog.close()
+);
+
+createHealthDataDialog.addEventListener('click', (event) => {
+    if (event.target.id !== createHealthDataPopup.id) {
+        createHealthDataDialog.close();
+    }
+});
