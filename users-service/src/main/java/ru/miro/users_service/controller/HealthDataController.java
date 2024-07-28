@@ -29,6 +29,11 @@ public class HealthDataController {
         return healthDataService.findOne(id);
     }
 
+    @GetMapping("/getByUserId/{id}")
+    public List<HealthDataDTO> getHealthDataByUserId(@PathVariable("id") long id) {
+        return healthDataService.getByUserId(id);
+    }
+
     @PostMapping("/add")
     public HttpStatus addHealthData(@RequestBody @Valid HealthDataDTO healthDataDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

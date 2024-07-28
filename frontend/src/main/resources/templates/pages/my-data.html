@@ -41,20 +41,70 @@
     <div class="container" id="create-health-data-container">
         <h2>Create health data:</h2>
 
-        <button id="create-health-data-btn" type="button">Create</button>
+        <div id="create-health-data-elements">
+            <button id="create-health-data-btn" type="button">Create</button>
 
-        <dialog id="create-health-data-dialog">
-            <div id="create-health-data-dialog-container">
-                <h1>TEXT тут</h1>
-                <button id="cancel-create-health-data-btn" type="button">Cancel</button>
-            </div>
-        </dialog>
+            <dialog id="create-health-data-dialog">
+                <div id="create-health-data-dialog-container">
+                    <div class="create-header">
+                        <h1>Create new health data</h1>
+                    </div>
+
+                    <div class="create-main">
+                        <form class="create-health-data-form">
+                            <div class="health-data-input">
+                                <label for="date-input">Date: </label>
+                                <input id="date-input" type="datetime-local" required>
+                            </div>
+
+                            <div class="health-data-input">
+                                <label for="steps-input">Steps:</label>
+                                <input id="steps-input" type="number" min="0" oninput="validateInput(this)" required>
+                            </div>
+
+                            <div class="health-data-input">
+                                <label for="calories-input">Calories:</label>
+                                <input id="calories-input" type="number" min="0" oninput="validateInput(this)" required>
+                            </div>
+
+                            <div class="health-data-input">
+                                <label for="sleepHours-input">Sleep hours:</label>
+                                <input id="sleepHours-input" type="number" min="0" oninput="validateInput(this)" required>
+                            </div>
+
+                            <div class="health-data-input">
+                                <label for="heartRate-input">Heart rate:</label>
+                                <input id="heartRate-input" type="number" min="0" oninput="validateInput(this)" required>
+                            </div>
+
+                            <div class="health-data-input">
+                                <input id="submit-create-health-data-btn" type="submit" value="Create" >
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="create-bottom">
+                        <button id="cancel-create-health-data-btn" type="button">Cancel</button>
+                    </div>
+                </div>
+            </dialog>
+        </div>
+
     </div>
 
     <div class="container" id="health-data-container">
         <h2>Health data:</h2>
+
+        <div id="get-health-data-container">
+
+        </div>
     </div>
 
-    <script src="../js/sign.js"></script>
+    <footer>
+        <p>Health-Tracker - is the education project</p>
+        <p>© 2024 Miroslav Magnin</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

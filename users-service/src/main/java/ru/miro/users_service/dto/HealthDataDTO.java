@@ -18,7 +18,7 @@ public class HealthDataDTO {
 
     private Long userId;
 
-    @JsonFormat(pattern = "yyy-MM-dd'T'HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalDateTime date;
 
     @Min(value = 0, message = "The count of the steps should be greater than 0")

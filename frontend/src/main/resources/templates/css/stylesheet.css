@@ -9,6 +9,25 @@ body {
     background-color: #f4f4f9;
 }
 
+button, input[type="submit"] {
+    background-color: #90d582;
+    font-family: "Rubik Light", sans-serif;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #7fa974;
+}
 
 
 /* Header */
@@ -54,18 +73,20 @@ nav {
     text-decoration: none;
     margin: 0 10px;
     padding: 5px 10px;
+    border-radius: 10px;
     transition: background-color 0.3s;
 }
 
 .nav-right a:hover {
-    background-color: #5E7405;
+    background-color: rgba(93, 145, 63, 0.76);
+    border-radius: 10px;
 }
 
 
 
 /* Main container */
 .container {
-    width: 50%;
+    width: 30%;
     margin-top: 20px;
     padding: 20px;
     align-items: center;
@@ -87,6 +108,17 @@ nav {
 .container label {
     font-size: 20px;
     margin: 5px 5px 10px;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+    background-color: #254622;
+    color: #ABF27E;
 }
 
 
@@ -150,17 +182,6 @@ nav {
 /* Home page */
 #delete-jwt {
     background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
 }
 
 #delete-jwt:hover {
@@ -170,9 +191,17 @@ nav {
 
 
 /* My data page */
+#create-health-data-elements {
+    display: none;
+}
+
 #create-health-data-dialog {
     width: 50%;
     height: 50%;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #create-health-data-dialog::backdrop {
@@ -183,7 +212,45 @@ nav {
 #create-health-data-dialog-container {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
     background-color: #fff;
+}
+
+#create-health-data-elements {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+#submit-create-health-data-btn {
+
+}
+
+#create-health-data-dialog-container .health-data-input {
+    margin-top: 20px;
+}
+
+#create-health-data-dialog-container .health-data-input label {
+    font-size: 24px;
+}
+
+.create-bottom {
+    margin-bottom: 15px;
+}
+
+#cancel-create-health-data-btn {
+    width: 100px;
+    margin-top: 15px;
+    background-color: #f44336;
+
+}
+
+#cancel-create-health-data-btn:hover {
+    background-color: #d32f2f;
 }
 
 

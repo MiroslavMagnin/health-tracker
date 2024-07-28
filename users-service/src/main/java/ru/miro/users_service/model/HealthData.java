@@ -29,7 +29,7 @@ public class HealthData {
     private User user;
 
     @Column(name = "date")
-    @JsonFormat(pattern = "yyy-MM-dd'T'HH:mm:ss", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
     private LocalDateTime date;
 
     @Column(name = "steps")

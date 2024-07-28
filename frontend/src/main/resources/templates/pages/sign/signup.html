@@ -54,16 +54,21 @@
             <input id="password-input" type="password" required>
 
             <label for="weight-input">Weight:</label>
-            <input id="weight-input" type="text" required>
+            <input id="weight-input" type="number" min="0" oninput="validateInput(this)" required>
 
             <label for="height-input">Height:</label>
-            <input id="height-input" type="text" required>
+            <input id="height-input" type="number" min="0" oninput="validateInput(this)" required>
 
             <input type="submit" value="Sign in">
         </form>
     </div>
 
-    <script src="../../js/sign.js"></script>
+    <footer>
+        <p>Health-Tracker - is the education project</p>
+        <p>© 2024 Miroslav Magnin</p>
+    </footer>
+
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>

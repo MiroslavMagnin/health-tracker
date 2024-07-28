@@ -21,16 +21,23 @@ public class HealthDataService {
 
     private final HealthDataRepository healthDataRepository;
     private final UsersService usersService;
+    private final HealthDataMapper healthDataMapper;
 
     public List<HealthDataDTO> findAll() {
         return healthDataRepository.findAll().stream().map(healthDataMapper::toDTO).collect(Collectors.toList());
     }
-    private final HealthDataMapper healthDataMapper;
 
     public HealthDataDTO findOne(long id) {
         return healthDataRepository.findById(id)
                 .map(healthDataMapper::toDTO)
                 .orElseThrow(() -> new HealthDataNotFoundException(id));
+    }
+
+    public List<HealthDataDTO> getByUserId(long id) {
+        return healthDataRepository.getAllByUserId(id)
+                .stream()
+                .map(healthDataMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
     @Transactional
