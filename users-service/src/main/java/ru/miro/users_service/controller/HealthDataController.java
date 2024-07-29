@@ -3,6 +3,7 @@ package ru.miro.users_service.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ import java.util.List;
 public class HealthDataController {
 
     private final HealthDataService healthDataService;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     @GetMapping()
     public List<HealthData> getHealthData() {
@@ -67,6 +69,11 @@ public class HealthDataController {
     public HttpStatus deleteHealthData(@PathVariable("id") long id) {
         healthDataService.delete(id);
         return HttpStatus.OK;
+    }
+
+    @PostMapping("/kafka")
+    public void publish(@RequestBody String message) {
+        kafkaTemplate.send("healthData", message);
     }
 
 }

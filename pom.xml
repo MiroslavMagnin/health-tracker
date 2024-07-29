@@ -13,6 +13,7 @@
 		<module>gateway-service</module>
 		<module>auth-service</module>
         <module>users-service</module>
+        <module>analytics-service</module>
     </modules>
 
 </project>
