@@ -14,9 +14,6 @@ spring:
     username: ${POSTGRES_USERNAME}
     password: ${POSTGRES_PASSWORD}
 
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,6 +22,9 @@ spring:
   data:
     jdbc:
       dialect: postgresql
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
 
 token:
   signing:

@@ -8,8 +8,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import ru.miro.users_service.dto.HealthDataDTO;
 import ru.miro.users_service.dto.UserDTO;
 import ru.miro.users_service.exception.UserNotCreatedException;
 import ru.miro.users_service.model.User;
@@ -34,6 +36,9 @@ class UsersControllerTest {
     @MockBean
     private UsersService usersService;
 
+    @Autowired
+    private KafkaTemplate<String, HealthDataDTO> kafkaTemplate;
+
     @MockBean
     private UserDTOValidator userDTOValidator;
 
@@ -46,7 +51,7 @@ class UsersControllerTest {
     @Test
     void getUsers() throws Exception {
 
-        mockMvc.perform(get("/user"))
+        mockMvc.perform(get("/users"))
                 .andExpect(status().isOk());
 
         verify(usersService, times(1)).findAll();
@@ -68,7 +73,7 @@ class UsersControllerTest {
 
         when(usersService.findOne(15L)).thenReturn(user);
 
-        mockMvc.perform(get("/user/{id}", 15L))
+        mockMvc.perform(get("/users/{id}", 15L))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(15L))
                 .andExpect(jsonPath("$.name").value("Ivan"))
@@ -96,7 +101,7 @@ class UsersControllerTest {
 
         String userDTOJSON = objectMapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(post("/user/add")
+        mockMvc.perform(post("/users/add")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(userDTOJSON))
                 .andExpect(status().isCreated());
@@ -119,7 +124,7 @@ class UsersControllerTest {
 
         String userDTOJSON = objectMapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(post("/user/add")
+        mockMvc.perform(post("/users/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userDTOJSON))
                 .andExpect(status().isNotAcceptable())
@@ -143,7 +148,7 @@ class UsersControllerTest {
 
         String userDTOJSON = objectMapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(post("/user/add")
+        mockMvc.perform(post("/users/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userDTOJSON))
                 .andExpect(status().isNotAcceptable())
@@ -164,19 +169,19 @@ class UsersControllerTest {
                 .birthDate(LocalDate.of(2005,7,8))
                 .email("test@mail.ru")
                 .password("test")
-                .height(-180)
                 .weight(-80)
+                .height(-180)
                 .build();
 
         String userDTOJSON = objectMapper.writeValueAsString(userDTO);
 
-        mockMvc.perform(post("/user/add")
+        mockMvc.perform(post("/users/add")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(userDTOJSON))
                 .andExpect(status().isNotAcceptable())
                 .andExpect(result -> assertInstanceOf(UserNotCreatedException.class, result.getResolvedException()))
                 .andExpect(result ->
-                        assertEquals("weight - The weight should be greater than 0; height - The height should be greater than 0; ",
+                        assertEquals("height - The height should be greater than 0; weight - The weight should be greater than 0; ",
                         Objects.requireNonNull(result.getResolvedException()).getMessage()));
 
         verify(usersService, times(0)).save(userDTO);

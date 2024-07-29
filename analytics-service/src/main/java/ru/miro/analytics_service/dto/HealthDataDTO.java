@@ -3,13 +3,13 @@ package ru.miro.analytics_service.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @ToString

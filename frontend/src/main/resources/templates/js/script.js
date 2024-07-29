@@ -231,7 +231,7 @@ $(document).ready(function () {
             // Get list of the health data
             getUserHealthDataResponse()
                 .then(data => {
-                    data.forEach(function(item) {
+                    data.slice().reverse().forEach(function(item) {
                         console.log(item)
                         const divHealthData = document.createElement('div');
                         divHealthData.setAttribute('class', 'health-data');
@@ -242,7 +242,11 @@ $(document).ready(function () {
                         <h3>Calories: ${item.calories}</h3> 
                         <h3>Sleep Hours: ${item.sleepHours}</h3> 
                         <h3>Heart Rate: ${item.heartRate}</h3> 
-                        <button class="delete-health-data-btn" value="${item.id}" onclick="deleteHealthData(this.value)" type="button">Delete</button>
+                        <div>
+                        <!--TODO -->
+                        <!-- <button class="update-health-data-btn" value="${item.id}" onclick="updateHealthData(this.value)" type="button">Update</button>-->
+                            <button class="delete-health-data-btn" value="${item.id}" onclick="deleteHealthData(this.value)" type="button">Delete</button>
+                        </div>
                     `;
                         getHealthDataContainer.appendChild(divHealthData);
                     });

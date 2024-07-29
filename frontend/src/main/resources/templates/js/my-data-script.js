@@ -21,10 +21,55 @@ createHealthDataDialog.addEventListener('click', (event) => {
     }
 });
 
-
 function deleteHealthData (id) {
     $.ajax({
         url: 'http://localhost:8080/users/health-data/' + id + '/delete',
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${getToken()}`
+        },
+        success: function (data) {
+            console.log("Delete health-data: id=" + id);
+            location.reload();
+        },
+        error: function (error) {
+            console.log("Error: delete health-data - status - " + error.status);
+            errorDeleteHealthData.innerHTML = `
+                    <h2>Error: status - ${error.status}</h2>
+                `;
+            errorCreateHealthData.style.display = "block";
+        }
+    });
+}
+
+// TODO
+function openUpdateHealthDataDialog (id) {
+    $.ajax({
+        url: 'http://localhost:8080/users/health-data/' + id + '/update',
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${getToken()}`
+        },
+        success: function (data) {
+            console.log("Delete health-data: id=" + id);
+            location.reload();
+        },
+        error: function (error) {
+            console.log("Error: delete health-data - status - " + error.status);
+            errorDeleteHealthData.innerHTML = `
+                    <h2>Error: status - ${error.status}</h2>
+                `;
+            errorCreateHealthData.style.display = "block";
+        }
+    });
+}
+
+// TODO
+function updateHealthData (id) {
+    $.ajax({
+        url: 'http://localhost:8080/users/health-data/' + id + '/update',
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

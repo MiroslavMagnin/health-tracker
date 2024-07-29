@@ -8,6 +8,21 @@ spring:
   config:
     import: optional:file:.env[.properties]
 
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  data:
+    jdbc:
+      dialect: postgresql
+
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
 
