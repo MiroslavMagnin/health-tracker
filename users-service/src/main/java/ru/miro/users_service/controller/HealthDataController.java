@@ -8,6 +8,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.miro.users_service.dto.HealthDataDTO;
 import ru.miro.users_service.exception.HealthDataNotCreatedException;
+import ru.miro.users_service.model.HealthData;
 import ru.miro.users_service.service.HealthDataService;
 
 import java.util.List;
@@ -20,17 +21,17 @@ public class HealthDataController {
     private final HealthDataService healthDataService;
 
     @GetMapping()
-    public List<HealthDataDTO> getHealthData() {
+    public List<HealthData> getHealthData() {
         return healthDataService.findAll();
     }
 
     @GetMapping("/{id}")
-    public HealthDataDTO getHealthData(@PathVariable("id") long id) {
+    public HealthData getHealthData(@PathVariable("id") long id) {
         return healthDataService.findOne(id);
     }
 
     @GetMapping("/getByUserId/{id}")
-    public List<HealthDataDTO> getHealthDataByUserId(@PathVariable("id") long id) {
+    public List<HealthData> getHealthDataByUserId(@PathVariable("id") long id) {
         return healthDataService.getByUserId(id);
     }
 

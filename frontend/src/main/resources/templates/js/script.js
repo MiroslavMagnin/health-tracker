@@ -237,11 +237,12 @@ $(document).ready(function () {
                         divHealthData.setAttribute('class', 'health-data');
 
                         divHealthData.innerHTML = `
-                        <h3>Date: ${item.date}</h3> 
+                        <h3>Date: ${item.date.replace('T', ' ')}</h3> 
                         <h3>Steps: ${item.steps}</h3> 
                         <h3>Calories: ${item.calories}</h3> 
                         <h3>Sleep Hours: ${item.sleepHours}</h3> 
                         <h3>Heart Rate: ${item.heartRate}</h3> 
+                        <button class="delete-health-data-btn" value="${item.id}" onclick="deleteHealthData(this.value)" type="button">Delete</button>
                     `;
                         getHealthDataContainer.appendChild(divHealthData);
                     });
@@ -269,60 +270,45 @@ $(document).ready(function () {
     $('.create-health-data-form').on('submit', async function (event) {
         event.preventDefault();  // Предотвращает обновление страницы
 
+        const createHealthDataDialog = document.getElementById('create-health-data-dialog');
+        const errorCreateHealthData = document.getElementById('error-create-health-data');
+
         const dateInput = $('#date-input').val();
         const stepsInput = $('#steps-input').val();
         const caloriesInput = $('#calories-input').val();
         const sleepHoursInput = $('#sleepHours-input').val();
         const heartRateInput = $('#heartRate-input').val();
 
-        try {
-            const response = await fetch('http://localhost:8080/users/health-data/add', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "Authorization": `Bearer ${getToken()}`
-                },
-                body: JSON.stringify({
-                    userId: parseInt(getUserId()),
-                    date: dateInput,
-                    steps: stepsInput,
-                    calories: caloriesInput,
-                    sleepHours: sleepHoursInput,
-                    heartRate: heartRateInput
-                })
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-
-                console.log("Создание health-data: " + data);
-            } else {
-                const errorData = await response.json();
-                $('#error-message').html('Error: ' + errorData.error).show();
+        $.ajax({
+            url: 'http://localhost:8080/users/health-data/add',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${getToken()}`
+            },
+            dataType: "json",
+            data: JSON.stringify({
+                userId: parseInt(getUserId()),
+                date: dateInput,
+                steps: stepsInput,
+                calories: caloriesInput,
+                sleepHours: sleepHoursInput,
+                heartRate: heartRateInput
+            }),
+            success: function (data) {
+                console.log("Create health-data: " + data);
+                createHealthDataDialog.close();
+                location.reload();
+            },
+            error: function (error) {
+                console.log("Error: create health-data - status - " + error.status);
+                errorCreateHealthData.innerHTML = `
+                    <h2>Error: status - ${error.status}</h2>
+                `;
+                errorCreateHealthData.style.display = "block";
             }
-        } catch (error) {
-            $('#error-message').html('Error: ' + error.message).show();
-        }
+        });
+
     });
 });
 
-// Create health-data dialog menu
-const createHealthDataBtn = document.getElementById("create-health-data-btn");
-const createHealthDataDialog = document.getElementById("create-health-data-dialog");
-const createHealthDataDialogContainer = document.getElementById("create-health-data-dialog-container");
-const cancelCreateHealthDataBtn = document.getElementById("cancel-create-health-data-btn");
-
-createHealthDataBtn.addEventListener("click", () =>
-    createHealthDataDialog.showModal()
-);
-cancelCreateHealthDataBtn.addEventListener("click", () =>
-    createHealthDataDialog.close()
-);
-
-createHealthDataDialog.addEventListener('click', (event) => {
-    if (event.target === createHealthDataDialog) {
-        createHealthDataDialog.close();
-    }
-});
-
-// Create health-data container

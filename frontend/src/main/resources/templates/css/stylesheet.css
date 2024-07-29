@@ -171,7 +171,7 @@ footer {
     background-color: #45a049;
 }
 
-.error-message {
+.error-message, #error-create-health-data, #error-delete-health-data {
     color: red;
     margin-bottom: 10px;
     display: none;
@@ -180,11 +180,11 @@ footer {
 
 
 /* Home page */
-#delete-jwt {
+#delete-jwt, .delete-health-data-btn {
     background-color: #f44336;
 }
 
-#delete-jwt:hover {
+#delete-jwt:hover, .delete-health-data-btn:hover {
     background-color: #d32f2f;
 }
 
@@ -197,7 +197,7 @@ footer {
 
 #create-health-data-dialog {
     width: 50%;
-    height: 50%;
+    height: 55%;
     padding: 0;
     border: none;
     border-radius: 8px;
@@ -251,6 +251,10 @@ footer {
 
 #cancel-create-health-data-btn:hover {
     background-color: #d32f2f;
+}
+
+.health-data {
+    margin-top: 40px;
 }
 
 
