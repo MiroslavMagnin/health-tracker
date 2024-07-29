@@ -24,7 +24,11 @@ public class GatewayConfig {
 
                 .route("users-service", r -> r.path("/users/**")
                         .filters(f -> f.filter(filter))
-                        .uri("http://localhost:8091")) // lb://user-service http://localhost:8091
+                        .uri("http://localhost:8091"))
+
+                .route("analytics-service", r -> r.path("/analytics/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:8093"))
 
                 .build();
     }

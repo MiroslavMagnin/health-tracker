@@ -20,7 +20,7 @@ import java.util.List;
 public class HealthDataController {
 
     private final HealthDataService healthDataService;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, HealthDataDTO> kafkaTemplate;
 
     @GetMapping()
     public List<HealthData> getHealthData() {
@@ -55,6 +55,7 @@ public class HealthDataController {
         }
 
         healthDataService.save(healthDataDTO);
+        kafkaTemplate.send("healthData", healthDataDTO);
         return HttpStatus.CREATED;
     }
 
@@ -72,8 +73,8 @@ public class HealthDataController {
     }
 
     @PostMapping("/kafka")
-    public void publish(@RequestBody String message) {
-        kafkaTemplate.send("healthData", message);
+    public void publish(@RequestBody HealthDataDTO healthDataDTO) {
+        kafkaTemplate.send("healthData", healthDataDTO);
     }
 
 }

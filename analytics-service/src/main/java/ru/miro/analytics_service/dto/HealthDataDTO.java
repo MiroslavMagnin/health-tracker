@@ -1,15 +1,18 @@
-package ru.miro.users_service.dto;
+package ru.miro.analytics_service.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 public class HealthDataDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
