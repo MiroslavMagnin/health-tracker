@@ -29,6 +29,12 @@ button:hover, input[type="submit"]:hover {
     background-color: #7fa974;
 }
 
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+
 
 /* Header */
 header {
@@ -90,8 +96,8 @@ nav {
     margin-top: 20px;
     padding: 20px;
     align-items: center;
-    /*text-align: center;*/
-    text-align: left;
+    text-align: center;
+    /*text-align: left;*/
     justify-content: center;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -110,7 +116,6 @@ nav {
     margin: 5px 5px 10px;
 }
 
-
 /* Footer */
 footer {
     text-align: center;
@@ -121,6 +126,24 @@ footer {
     color: #ABF27E;
 }
 
+/* Empty container */
+.empty-container {
+    height: 29vw;
+}
+
+.empty-signup-container {
+    height: 5.05vw;
+
+}
+
+.empty-signin-container {
+    height: 20.2vw;
+}
+
+#empty-my-data-container {
+    height: 9.86vw;
+    display: none;
+}
 
 
 /* Sign forms */
@@ -256,5 +279,3 @@ footer {
 .health-data {
     margin-top: 40px;
 }
-
-

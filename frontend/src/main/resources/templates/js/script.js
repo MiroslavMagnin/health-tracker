@@ -205,6 +205,8 @@ $(document).ready(function () {
         const divCreateHealthDataElements = document.getElementById('create-health-data-elements');
         const divNotAuth = document.createElement('not-auth');
 
+        const emptyContainer = document.getElementById('empty-my-data-container');
+
         if (checkAuth()) {
             $.ajax({
                 url: `http://localhost:8080/users/getUserByEmail/${getEmail()}`,
@@ -256,17 +258,18 @@ $(document).ready(function () {
                 });
 
         } else {
-            divUserInfo.innerHTML = `
-                    <h3>You're not authenticated</h3>            
-            `;
-            userDataContainer.appendChild(divUserInfo);
 
             divCreateHealthDataElements.style.display = "none";
 
             divNotAuth.innerHTML = `
                     <h3>You're not authenticated</h3>            
             `;
-            createHealthDataContainer.appendChild(divNotAuth);
+
+            userDataContainer.appendChild(divNotAuth.cloneNode(true));
+            createHealthDataContainer.appendChild(divNotAuth.cloneNode(true));
+            getHealthDataContainer.appendChild(divNotAuth.cloneNode(true));
+
+            emptyContainer.style.display = 'block';
         }
     }
 

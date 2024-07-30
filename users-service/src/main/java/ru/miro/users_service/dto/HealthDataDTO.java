@@ -8,8 +8,12 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
 @Setter
+@ToString
 public class HealthDataDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -31,5 +35,4 @@ public class HealthDataDTO implements Serializable {
     @Min(value = 0, message = "The heart rate should be greater than 0")
     private Integer heartRate;
 
-    public HealthDataDTO() {}
 }
