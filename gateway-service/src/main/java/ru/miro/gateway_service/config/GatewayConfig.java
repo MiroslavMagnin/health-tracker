@@ -20,15 +20,15 @@ public class GatewayConfig {
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("auth-service", r -> r.path("/auth/**")
-                        .uri("http://localhost:8090"))
+                        .uri("http://auth:8090")) // http://localhost:8090
 
                 .route("users-service", r -> r.path("/users/**")
                         .filters(f -> f.filter(filter))
-                        .uri("http://localhost:8091"))
+                        .uri("http://users:8091")) // http://localhost:8091
 
                 .route("analytics-service", r -> r.path("/analytics/**")
                         .filters(f -> f.filter(filter))
-                        .uri("http://localhost:8093"))
+                        .uri("http://analytics:8093")) // http://localhost:8093
 
                 .build();
     }

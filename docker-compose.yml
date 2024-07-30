@@ -1,0 +1,253 @@
+version: "3.0"
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
+  kafka-data:
+    driver: local
+  zookeeper-data:
+    driver: local
+
+services:
+  # My services
+  gateway:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    networks:
+      - app
+    depends_on:
+      - postgres
+      - auth
+      - users
+      - analytics
+    env_file:
+      - ".env"
+    ports:
+      - "8080:8080"
+
+  auth:
+    build:
+      context: ./auth-service
+      dockerfile: Dockerfile
+    networks:
+      - app
+    depends_on:
+      - postgres
+      - kafka
+    env_file:
+      - ".env"
+    ports:
+      - "8090:8090"
+
+  users:
+    build:
+      context: ./users-service
+      dockerfile: Dockerfile
+    networks:
+      - app
+    depends_on:
+      - postgres
+      - kafka
+    env_file:
+      - ".env"
+    ports:
+      - "8091:8091"
+
+  analytics:
+    build:
+      context: ./analytics-service
+      dockerfile: Dockerfile
+    networks:
+      - app
+    depends_on:
+      - users
+      - kafka
+    env_file:
+      - ".env"
+    ports:
+      - "8093:8093"
+
+  # Outside services
+  zookeeper:
+    image: "confluentinc/cp-zookeeper:latest"
+    networks:
+      - app
+    environment:
+      - ZOOKEEPER_CLIENT_PORT=2181
+      - ZOOKEEPER_TICK_TIME=2000
+    ports:
+      - "2181:2181"
+    volumes:
+      - zookeeper-data:/var/lib/zookeeper/data
+
+  kafka:
+    image: "confluentinc/cp-kafka:latest"
+    networks:
+      - app
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka-data:/var/lib/kafka/data
+
+  postgres:
+    image: "postgres:latest"
+    networks:
+      - app
+    env_file:
+      - .env
+    ports:
+      - "5437:5432"
+    command:
+      - "postgres"
+      - "-c"
+      - "wal_level=logical"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#version: "3.0"
+#
+#networks:
+#  app:
+#    driver: bridge
+#
+#volumes:
+#  db-data:
+#    driver: local
+#  kafka-data:
+#    driver: local
+#  zookeeper-data:
+#    driver: local
+#
+#services:
+#  # My services
+#  gateway:
+#    image: "miroslavmagnin/gateway-service:latest"
+#    networks:
+#      - app
+#    depends_on:
+#      - postgres
+#      - auth
+#      - users
+#      - analytics
+#    env_file:
+#      - ".env"
+#    ports:
+#      - "8080:8080"
+#
+#  auth:
+#    image: "miroslavmagnin/auth-service:latest"
+#    networks:
+#      - app
+#    depends_on:
+#      - postgres
+#      - kafka
+#    env_file:
+#      - ".env"
+#    ports:
+#      - "8090:8090"
+#
+#  users:
+#    image: "miroslavmagnin/users-service:latest"
+#    networks:
+#      - app
+#    depends_on:
+#      - postgres
+#      - kafka
+#    env_file:
+#      - ".env"
+#    ports:
+#      - "8091:8091"
+#
+#  analytics:
+#    image: "miroslavmagnin/analytics-service:latest"
+#    networks:
+#      - app
+#    depends_on:
+#      - users
+#      - kafka
+#    env_file:
+#      - ".env"
+#    ports:
+#      - "8093:8093"
+#
+#  # Outside services
+#  zookeeper:
+#    image: "confluentinc/cp-zookeeper:latest"
+#    networks:
+#      - app
+#    environment:
+#      - ZOOKEEPER_CLIENT_PORT=2181
+#      - ZOOKEEPER_TICK_TIME=2000
+#    ports:
+#      - "2181:2181"
+#    volumes:
+#      - zookeeper-data:/var/lib/zookeeper/data
+#
+#  kafka:
+#    image: "confluentinc/cp-kafka:latest"
+#    networks:
+#      - app
+#    environment:
+#      - KAFKA_BROKER_ID=1
+#      - KAFKA_ZOOKEEPER_CONNECT="zookeeper:2181"
+#      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+#      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+#      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+#    depends_on:
+#      - zookeeper
+#    ports:
+#      - "9092:9092"
+#    volumes:
+#      - kafka-data:/var/lib/kafka/data
+#
+#  postgres:
+#    image: "postgres:latest"
+#    networks:
+#      - app
+#    env_file:
+#      - .env
+#    ports:
+#      - "5437:5432"
+#    command:
+#      - "postgres"
+#      - "-c"
+#      - "wal_level=logical"
+#    volumes:
+#      - db-data:/var/lib/postgresql/data
+#
+#

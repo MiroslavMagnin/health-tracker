@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import ru.miro.auth_service.dto.UserDTO;
 import ru.miro.auth_service.dto.request.SignUpRequest;
 
-@FeignClient(name = "users-service", url = "http://localhost:8091")
+@FeignClient(name = "users-service", url = "http://users:8091") // http://localhost:8091
 public interface UsersServiceClient {
 
     @PostMapping("/users/add")

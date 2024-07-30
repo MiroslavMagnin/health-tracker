@@ -13,8 +13,8 @@
 
     <groupId>ru.miro</groupId>
     <artifactId>auth-service</artifactId>
-    <version>0.0.1</version>
-    <name>jwt-service</name>
+    <name>auth-service</name>
+    <description>auth-service</description>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -52,11 +52,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-bootstrap</artifactId>-->
-<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -108,5 +103,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+                <configuration>
+                    <mainClass>ru.miro.auth_service.AuthServiceApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

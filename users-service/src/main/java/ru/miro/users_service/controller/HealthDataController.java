@@ -72,9 +72,4 @@ public class HealthDataController {
         return HttpStatus.OK;
     }
 
-    @PostMapping("/kafka")
-    public void publish(@RequestBody HealthDataDTO healthDataDTO) {
-        kafkaTemplate.send("healthData", healthDataDTO);
-    }
-
 }
