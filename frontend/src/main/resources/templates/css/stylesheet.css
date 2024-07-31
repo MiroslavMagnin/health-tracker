@@ -59,7 +59,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #254622;
+    background-color: #3a593d;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -84,7 +84,7 @@ nav {
 }
 
 .nav-right a:hover {
-    background-color: rgba(93, 145, 63, 0.76);
+    background-color: rgba(99, 143, 92, 0.76);
     border-radius: 10px;
 }
 
@@ -122,7 +122,7 @@ footer {
     width: 100%;
     margin-top: 20px;
     padding: 0;
-    background-color: #254622;
+    background-color: #3a593d;
     color: #ABF27E;
 }
 
@@ -228,7 +228,7 @@ footer {
 }
 
 #create-health-data-dialog::backdrop {
-    background-color: rgba(48, 114, 36, 0.38);
+    background-color: rgba(103, 133, 96, 0.38);
     backdrop-filter: blur(8px);
 }
 
@@ -278,4 +278,20 @@ footer {
 
 .health-data {
     margin-top: 40px;
+}
+
+
+
+/* For mobiles */
+
+@media screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .container {
+        width: 70%;
+    }
 }

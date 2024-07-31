@@ -177,7 +177,7 @@ $(document).ready(function () {
                 const data = await response.json();
 
                 // Redirect to the signin page
-                window.location.href = '../pages/sign/signin.html';
+                window.location.href = '../sign/signin.html';
 
             } else {
                 const errorData = await response.json();
