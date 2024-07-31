@@ -9,7 +9,7 @@
 - Docker
 
 # 🤔 About the project
-Health-tracker is a microservices-based application designed to monitor users' health. The project consists of several services, including gateway-service, auth-service, and users-service.
+Health-tracker is a microservices-based application designed to monitor users' health.
 
 As part of this project, 4 services have been developed, the names of which are: 
 - gateway-service
