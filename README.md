@@ -393,7 +393,7 @@ Incorrect password:
 2. 📁 Go to the project's home directory: ```cd health-tracker```
 3. ⌨️ Run docker compose: ```docker-compose up```
 4. ⌛ Wait while all images are built and all services are launching   
-5. 📋 For swagger ui localhost:8080/{service-name}/swagger-ui/index.html   
+5. 📋 For check Swagger UI ```localhost:8080/{service-name}/swagger-ui/index.html```
 
 # 📸 Screenshots
 
